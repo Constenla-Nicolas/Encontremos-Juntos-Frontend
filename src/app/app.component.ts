@@ -12,7 +12,7 @@ export class AppComponent {
     { title: 'Archived', url: '/folder/archived', icon: 'archive' },
     { title: 'Trash', url: '/folder/trash', icon: 'trash' },
   
-  //AIzaSyDJRMGSwThxHc4SpBfdNhwMvuzU3bPqH7g
+
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor() {}
