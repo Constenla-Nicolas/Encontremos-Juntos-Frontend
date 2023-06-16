@@ -2,7 +2,21 @@
   "name": "client",
   "version": "0.0.1",
   "author": "Ionic Framework",
+  "keywords": [
+    "google",
+    "javascript",
+    "maps",
+    "samples"
+  ],
+
   "homepage": "https://ionicframework.com/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/googlemaps/js-samples.git"
+  },
+  "files": [],
+  "license": "Apache-2.0",
+   
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -29,6 +43,7 @@
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
+
     "@angular-devkit/build-angular": "^16.0.0",
     "@angular-eslint/builder": "^16.0.0",
     "@angular-eslint/eslint-plugin": "^16.0.0",
@@ -59,6 +74,7 @@
     "karma-jasmine-html-reporter": "~2.0.0",
     "ts-node": "^8.3.0",
     "typescript": "~5.0.2"
+    
   },
   "description": "An Ionic project"
 }
