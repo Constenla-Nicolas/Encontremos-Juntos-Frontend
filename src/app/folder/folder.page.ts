@@ -15,10 +15,12 @@ export class FolderPage implements OnInit {
   ngOnInit() {
   this.folder = this.activatedRoute.snapshot.paramMap.get('id') as string;
     
-    
+  // // this.router.navigateByUrl('/mypageA', {skipLocationChange: true}).then(() => {
+  // //   this.router.navigate(["/mypageA"]);
+  //   });  
   
     const loader = new Loader({
-      apiKey: "AIzaSyCVFs0L4jsFotzVQZOsDihnWB6GiJccXlw",
+      apiKey: "",
       version: "weekly",
       
     });
