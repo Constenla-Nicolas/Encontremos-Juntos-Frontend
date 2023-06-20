@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Loader } from '@googlemaps/js-api-loader';
 
 @Component({
   selector: 'app-folder',
@@ -12,18 +13,30 @@ export class FolderPage implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.folder = this.activatedRoute.snapshot.paramMap.get('id') as string;
+  this.folder = this.activatedRoute.snapshot.paramMap.get('id') as string;
+    
+    
+  
+    const loader = new Loader({
+      apiKey: "AIzaSyCVFs0L4jsFotzVQZOsDihnWB6GiJccXlw",
+      version: "weekly",
+      
+    });
+    let map;
+    loader.load().then(() => {
+      map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+        center: { lat: -34.614396, lng: -58.4234967 },
+        zoom: 10,
+        mapTypeId:  "hybrid",
+        disableDefaultUI: true,
+      });
+    });
   }
-}
-let map: google.maps.Map;
-async function initMap(): Promise<void> {
-  //@ts-ignore
-  const { Map } = await google.maps.importLibrary("maps");
-  map = new Map(document.getElementById("map") as HTMLElement, {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
-  });
+ 
+  
+  
 }
 
-initMap();
-export {};
+
+
+

@@ -5,6 +5,8 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'folder/Inbox',
+    // component: PreloadAllModules,
+    // redirectTo: "",
     pathMatch: 'full'
   },
   {

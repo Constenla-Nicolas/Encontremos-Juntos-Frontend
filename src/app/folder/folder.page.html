@@ -4,11 +4,13 @@
 
     <link rel="stylesheet" type="text/css" href="./folder.page.scss" />
     <script type="module" src="folder/folder.page.ts"></script>
+
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>{{ folder }}</ion-title>
+    <!-- <ion-title></ion-title> -->
   </ion-toolbar>
 </ion-header>
 
@@ -19,17 +21,19 @@
     </ion-toolbar>
   </ion-header>
 
-
-  <div id="container">
-     
-<div id="map">
-  <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
-    ({key: "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg", v: "weekly"});</script>
-    
+  <div id="map">
+    <!-- <div id="container">
+    <p>prueba <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <p>eeeeeeeeee</p>
+    </div> -->
   </div>
+  <ion-button class="mainButton">
+    <ion-icon name="add-outline"></ion-icon>
+  </ion-button>  
+  <ion-button class="mainButton">
+    <ion-icon name="camera-outline"></ion-icon>
+  </ion-button>  
   
-  <p>prueba <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <p>aaaaaa</p>
 
-  
 </ion-content>
