@@ -1,3 +1,5 @@
+/// <reference types="node" />
+
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Loader } from '@googlemaps/js-api-loader';
@@ -15,12 +17,9 @@ export class FolderPage implements OnInit {
   ngOnInit() {
   this.folder = this.activatedRoute.snapshot.paramMap.get('id') as string;
     
-  // // this.router.navigateByUrl('/mypageA', {skipLocationChange: true}).then(() => {
-  // //   this.router.navigate(["/mypageA"]);
-  //   });  
-  
     const loader = new Loader({
-      apiKey: "",
+     apiKey: `${process.env['MAPS_APP_API_KEY']}`,
+    //  apiKey: "AIzaSyCVFs0L4jsFotzVQZOsDihnWB6GiJccXlw",
       version: "weekly",
       
     });
@@ -35,7 +34,6 @@ export class FolderPage implements OnInit {
     });
   }
  
-  
   
 }
 
