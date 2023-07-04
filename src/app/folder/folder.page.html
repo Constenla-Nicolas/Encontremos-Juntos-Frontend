@@ -10,8 +10,10 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>{{ folder }}</ion-title>
-    <!-- <ion-title></ion-title> -->
+    <ion-title></ion-title>
+  
   </ion-toolbar>
+  
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -20,17 +22,16 @@
       <ion-title size="large">{{ folder }}</ion-title>
     </ion-toolbar>
   </ion-header>
-
   <div id="map">
+  
 
   </div>
-  <ion-button [routerLink]="['/add']" class="mainButton">
+  <div>
+  <ion-button [routerLink]="['../add']" class="mainButton">
     <ion-icon name="add-outline"></ion-icon>
   </ion-button>  
-  <ion-button class="mainButton">
+  <ion-button (getUsersEvent)="getAllPets()" class="mainButton">
     <ion-icon name="camera-outline"></ion-icon>
   </ion-button>  
-  
-  <p>aaaaaa</p>
-
+  </div>
 </ion-content>

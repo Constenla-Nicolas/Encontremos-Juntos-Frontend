@@ -1,45 +1,18 @@
-/// <reference types="node" />
-
-import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Loader } from '@googlemaps/js-api-loader';
- 
+import { Component, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FolderService } from './folder.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-folder',
-  templateUrl: './folder.page.html',
-  styleUrls: ['./folder.page.scss'],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-export class FolderPage implements OnInit {
-  public folder!: string;
-  private activatedRoute = inject(ActivatedRoute);
-  constructor(private folderService : FolderService) {}
+export class AppComponent implements OnDestroy {
 
-  ngOnInit() {
-  this.folder = this.activatedRoute.snapshot.paramMap.get('id') as string;
-    
-    const loader = new Loader({
-     apiKey: `${process.env['MAPS_APP_API_KEY']}`,
-    
-      version: "weekly",
-      
-    });
-    let map;
-    loader.load().then(() => {
-      map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
-        center: { lat: -34.614396, lng: -58.4234967 },
-        zoom: 18,
-        // mapTypeId:  "hybrid",
-        disableDefaultUI: true,
-      });
-    });
-  }
- 
-  
+  constructor(private folderService: FolderService) {}
+
   title = 'angular-nodejs-example';
 
   // petForm = new FormGroup({
@@ -75,10 +48,4 @@ export class FolderPage implements OnInit {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }
-  
-
 }
-
-
-
-
