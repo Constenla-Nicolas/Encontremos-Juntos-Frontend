@@ -15,16 +15,19 @@ import { Subject } from 'rxjs';
   styleUrls: ['./folder.page.scss'],
 })
 export class FolderPage implements OnInit {
-  public folder!: string;
-  private activatedRoute = inject(ActivatedRoute);
-  constructor(private folderService : FolderService) {}
+ 
+  constructor(private petService : FolderService) {}
+  
+
+
+
 
   ngOnInit() {
-  this.folder = this.activatedRoute.snapshot.paramMap.get('id') as string;
+ 
     
     const loader = new Loader({
-     apiKey: `${process.env['MAPS_APP_API_KEY']}`,
-    
+    //  apiKey: `${process.env['MAPS_APP_API_KEY']}`,
+    apiKey: "AIzaSyCVFs0L4jsFotzVQZOsDihnWB6GiJccXlw",
       version: "weekly",
       
     });
@@ -37,16 +40,10 @@ export class FolderPage implements OnInit {
         disableDefaultUI: true,
       });
     });
+   
+    
   }
  
-  
-  title = 'angular-nodejs-example';
-
-  // petForm = new FormGroup({
-  //   firstName: new FormControl('', Validators.nullValidator() && Validators.required),
-  //   lastName: new FormControl('', Validators.nullValidator() && Validators.required),
-  //   email: new FormControl('', Validators.nullValidator() && Validators.required)
-  // });
 
   pets: any[] = [];
   petCount = 0;
@@ -64,11 +61,11 @@ export class FolderPage implements OnInit {
   }
 
   getAllPets() {
-    // this.folderService.getPets().pipe(takeUntil(this.destroy$)).subscribe((pets: any[]) => {
-    //     this.pets = pets;
-    // });
-    this.folderService.getPets().pipe(takeUntil(this.destroy$)).subscribe(petsArray =>
-       this.pets=this.pets.concat(petsArray) )
+    
+    this.petService.getPets().pipe(takeUntil(this.destroy$)).subscribe(petsArray =>
+       console.log(petsArray) );
+        
+       
   }
 
   ngOnDestroy() {

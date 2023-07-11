@@ -16,14 +16,22 @@ ion-menu-button {
   line-height: 26px;
 }
 #map {
-  height: 90%;  /* The height is 400 pixels */
+  height: 85%;  /* The height is 400 pixels */
   width: 100%;  /* The width is the width of the web page */
  }
 ion-button{
 --size:90%;
---shape: "round";
+display: inline-block;
+/* Additional styling properties as needed */
+width: 46%;
+height: 70%;
+margin-right: 5px;
+margin-left: 10px;
 // --background: red;
 
+}
+#button-container{
+  height:15%;
 }
 
 #container p {
