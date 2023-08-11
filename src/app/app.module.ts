@@ -6,10 +6,14 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-// import { AddPipe } from './add.pipe';
+import { UnmarkComponent } from './unmark/unmark.component';
+import { ListComponent } from './list/list.component';
+import { ContactComponent } from './contact/contact.component';
+import { AddComponent } from './add/add.component';
+
 
 @NgModule({
-  declarations: [AppComponent ],
+  declarations: [AppComponent,UnmarkComponent,ListComponent,ContactComponent,AddComponent ],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

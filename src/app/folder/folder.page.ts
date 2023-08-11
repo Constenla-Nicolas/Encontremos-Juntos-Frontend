@@ -26,8 +26,8 @@ export class FolderPage implements OnInit {
  
     
     const loader = new Loader({
-     apiKey: `${process.env['MAPS_APP_API_KEY']}`,
-   
+    //  apiKey: `${process.env['MAPS_APP_API_KEY']}`,
+     apiKey: "AIzaSyCVFs0L4jsFotzVQZOsDihnWB6GiJccXlw",
       version: "weekly",
       
     });

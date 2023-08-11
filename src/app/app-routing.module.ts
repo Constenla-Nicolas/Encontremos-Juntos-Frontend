@@ -1,13 +1,33 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
+import { ListComponent } from './list/list.component';
+import { AddComponent } from './add/add.component';
+import { UnmarkComponent } from './unmark/unmark.component';
+import { ContactComponent } from './contact/contact.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/inbox',
+    redirectTo: 'folder',
     // component: PreloadAllModules,
-    // redirectTo: "",
-    pathMatch: 'full'
+ 
+    pathMatch: 'full',
+ 
+  },
+  {
+    path:'unmark',
+    component:UnmarkComponent
+  },
+  {
+    path:"list",
+    component: ListComponent
+  },
+  {
+    path:"add",
+    component:ListComponent
+  },
+  {
+    path:"contact",
+    component:ContactComponent
   },
   {
     path: 'folder/:id',
