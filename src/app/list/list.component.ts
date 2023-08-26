@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AppService } from '../app.service';
+import { AppComponent } from '../app.component';
+import { Subject } from 'rxjs';
+import { petModel } from '../modelo/petModel';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -7,8 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent  implements OnInit {
 
-  constructor() { }
+  constructor(private petService : AppService) {}
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
-  ngOnInit() {console.log("list")}
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
+  
+  pets: petModel[] = [];
+  ngOnInit() {
+    this.loadPets() 
+ 
+  }
+ 
 
+    petToBlock(x:any){
+      this.pets=x
+      console.log(this.pets)
+    }
+
+      loadPets():void {
+      this.petService.lista().subscribe(
+        {next:response=>this.petToBlock(response)}
+      ) 
+    }
+
+
+
+   
 }
