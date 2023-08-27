@@ -14,7 +14,13 @@ export class AppService {
   getPets(){
     return this.http.get(this.rootURL);
   }
+  getLocations(){
+    return this.http.get(`${this.rootURL}/getAllCords`)
+  }
 
+  getSpecificPet( id: number){
+    return this.http.get(`${this.rootURL}/getPet/${id}`)
+  }
 
 
   public lista(): Observable<petModel[]> {

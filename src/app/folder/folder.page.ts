@@ -6,28 +6,33 @@ import { Loader } from '@googlemaps/js-api-loader';
 import { Subject } from 'rxjs';
 import { AppService } from '../app.service';
 import { petModel } from '../modelo/petModel';
-
+ 
 @Component({
   selector: 'app-folder',
   templateUrl: './folder.page.html',
   styleUrls: ['./folder.page.scss'],
 })
 export class FolderPage implements OnInit {
+  locations: any []=[];
+  pets: any [] =[];
+  pet: petModel[] = [];
+  dataloaded=false;
 
   constructor(private petService : AppService) { }
+
   destroy$: Subject<boolean> = new Subject<boolean>();
   ngOnDestroy() {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }
 
-  pets: any [] =[];
-  pet: petModel[] = [];
+
 
 //   ngOnInit() {
 // this.mapLoader()
 //   }
   ngOnInit() {
+  
     // this.petService.getPets().pipe()
     //           .subscribe(result => { 
     //                                 this.pet = result;
@@ -41,31 +46,43 @@ export class FolderPage implements OnInit {
     //   this.pets=this.pets.concat(petsArray) )
 
 //  }
+this.petService.lista().pipe().subscribe((data: any) => {
+  console.log("primer log "+this.pets.length);
+  this.pets = data;
+  console.log("segundo log "+this.pets.length);
+  this.dataloaded=true;
+  this.loadlocation()
+  this.mapLoader()
+  console.log(this.pets[0])
 
+});
+ 
+ 
+ 
+    }
 
+  loadlocation() {
+     this.petService.getLocations().pipe().subscribe((data:any)=>{
+      this.locations=data;
+      console.log(data);
+     })
+  }
 
-
+    getonePet(){
+      this.petService.getSpecificPet(6).pipe().subscribe((data:any)=>{
+        console.log(data);
+      });
     }
 
 
 
-
-
-  loadPets():void {
-    this.petService.lista().subscribe(
-      {next:response=>this.pets=response}
-    ) 
-    console.log(this.pets.length)
-    // if (this.pets.length==0) {
-    //  this.loadPets() 
-    // }
-    
-  }
+ 
   
   mapLoader(){
         
     const loader = new Loader({
       apiKey: `${process.env['MAPS_APP_API_KEY']}`,
+
       version: "weekly",
       
     });
@@ -79,8 +96,9 @@ export class FolderPage implements OnInit {
         // mapTypeId:  "hybrid",
         disableDefaultUI: true,
       });
+      
       new google.maps.Marker({
-        position: {lat:-34.614386, lng:-58.4234967},
+        position: {lat:this.locations[1].la,lng:this.locations[1].lo},// {lat:-34.614386, lng:-58.4234967},
         map,
         title: "hello world"
       })
